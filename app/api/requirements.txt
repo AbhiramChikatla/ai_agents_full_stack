@@ -1,0 +1,7 @@
+flask
+langchain-google-genai
+pydantic
+python-dotenv
+langchain-openai
+browser-use
+playwright install
