@@ -4,4 +4,4 @@ pydantic
 python-dotenv
 langchain-openai
 browser-use
-playwright install
+playwright

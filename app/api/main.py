@@ -27,9 +27,9 @@ browser = Browser(
 	)
 )
 
-async def main(user_query):
+async def main(taskDescription):
 	agent = Agent(
-		task=user_query,
+		task=taskDescription,
     llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=SecretStr(os.getenv("GEMINI_API_KEY"))),
 		browser=browser,
 	)
@@ -43,13 +43,9 @@ async def main(user_query):
 @app.route('/api/run-agent', methods=['POST'])
 def receive_data():
     data = request.json 
-    taskDescription = data.get('taskDescription', '')
-    additionalInfo= data.get('additionalInfo', '')
-    if taskDescription == '':
-        return jsonify({"success":False,"message": "taskDescription not found!"})
-    if additionalInfo != '':
-         user_query = taskDescription + " use this additionalInfo - > " + additionalInfo
-    asyncio.run(main(user_query))
+    taskDescription = data.get('taskDescription', 'Not found')
+    additionalInfo= data.get('additionalInfo', 'Not found')
+    asyncio.run(main(taskDescription))
     return jsonify({"success":True,"message": "Data received successfully!"})
 
 
