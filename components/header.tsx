@@ -13,7 +13,6 @@ export function Header() {
       <div className="container flex h-16 items-center justify-center mx-auto px-4">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
-         
             <svg
               data-v-0dd9719b=""
               className="invert"
@@ -38,7 +37,6 @@ export function Header() {
                 fillOpacity={1}
                 className="background"
               />{" "}
-              
               <g
                 data-v-0dd9719b=""
                 fill="#333"

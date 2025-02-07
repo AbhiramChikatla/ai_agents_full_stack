@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,9 +7,11 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { Header } from "@/components/header"
+import { useRouter } from "next/navigation"
 
 export default function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(false)
+  const router = useRouter();
 
   const plans = [
     {
@@ -79,6 +80,9 @@ export default function PricingPage() {
       buttonVariant: "default" as const,
     },
   ]
+  const handleRedirect = () => {
+    router.push("/pricing/payment-form"); 
+  };
 
   return (
 
@@ -117,7 +121,7 @@ export default function PricingPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan) => (
-            <Card key={plan.name} className="relative bg-gray-950 border-gray-800">
+            <Card key={plan.name} className="relative bg-gray-950 border-gray-800" >
               {plan.popular && (
                 <Badge className="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#9FEF00] text-black">
                   Most Popular
